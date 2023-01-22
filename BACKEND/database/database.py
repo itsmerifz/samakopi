@@ -7,7 +7,7 @@ def init_database():
     default_app = initialize_app(cred)
     if default_app is None:
       raise Exception('Error while initializing database')
-    db = firestore.client().collection('predict_result')
+    db = firestore.client()
     return db
   except Exception as e:
     return jsonify({

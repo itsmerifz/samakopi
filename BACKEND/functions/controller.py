@@ -3,20 +3,14 @@ from database.database import init_database
 
 db = init_database()
 
-def create_predict_result_data(data: dict[str]):
-  """
-        create_predict_result_data() : Add document to Firestore collection with request body
-        Ensure you pass a custom ID as part of json body in post request
-        e.g. json={'id': '1', 'title': 'Write a blog post'}
-  """
+def create_predict_result_data(data: dict[str], text_predict: str):
   try:
-    breakpoint()
     _data = data
-    result = db.document(str(_data['id'])).set({
-      'status': _data['status'],
+    result = db.collection('predict_result').document(str(_data['id'])).set({
       'hasil': _data['hasil'],
       'percentage': _data['percentage'],
       'setuju': False,
+      'data': text_predict,
     })
     if result:
       return 'success'
