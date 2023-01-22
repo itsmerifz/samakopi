@@ -3,9 +3,8 @@ from database.database import init_database
 
 db = init_database()
 
-def create_predict_result_data(data: dict[str], text_predict: str):
+def create_predict_result_data(_data: dict[str], text_predict: str):
   try:
-    _data = data
     result = db.collection('predict_result').document(str(_data['id'])).set({
       'hasil': _data['hasil'],
       'percentage': _data['percentage'],
