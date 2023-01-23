@@ -1,7 +1,7 @@
 from flask import jsonify
-from database.database import init_database
+from database.database import get_database
 
-db = init_database()
+db = get_database()
 
 def create_predict_result_data(_data: dict[str], text_predict: str):
   try:
