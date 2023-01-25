@@ -11,9 +11,7 @@ def init_database():
       default_app = initialize_app(cred)
     return 'initialize success'
   except Exception as e:
-    return jsonify({
-      "error": e
-      }), 500
+    return str(e)
 
 def get_database():
   try:
@@ -22,6 +20,4 @@ def get_database():
     db = firestore.client()
     return db
   except Exception as e:
-    return jsonify({
-      "error": e
-      }), 500
+    return str(e)

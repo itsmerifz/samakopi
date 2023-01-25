@@ -16,6 +16,4 @@ def create_predict_result_data(_data: dict[str], text_predict: str):
     else:
       raise Exception('Failed to add data')
   except Exception as e:
-    return jsonify({
-      "error": e
-      }), 500
+    return str(e)

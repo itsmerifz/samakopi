@@ -9,5 +9,5 @@ def load_rnn_model():
       raise Exception('Model not found')
     return model
   except Exception as e:
-    print(str(e))
+    return str(e)
     

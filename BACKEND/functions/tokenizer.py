@@ -13,4 +13,4 @@ def tokenize(text: str):
       raise Exception('Error while tokenizing')
     return padded
   except Exception as e:
-    print(str(e))
+    return str(e)
