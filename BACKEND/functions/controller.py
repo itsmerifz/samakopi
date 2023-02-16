@@ -1,17 +1,15 @@
 from flask import jsonify
-from database.database import get_database
+import uuid
+import database.db_model as model
+import datetime
 
-db = get_database()
+db = model.db
 
-def create_predict_result_data(_data: dict[str], text_predict: str):
+def create_predict_result_data(_data: dict[str], text_predict: str) -> str:
   try:
-    result = db.collection('predict_result').document(str(_data['id'])).set({
-      'hasil': _data['hasil'],
-      'percentage': _data['percentage'],
-      'setuju': False,
-      'data': text_predict,
-    })
-    if result:
+    data = model.Predict(str(uuid.uuid4()), text_predict, _data['hasil'], _data['percentage'], datetime.datetime.now())
+    db.session.add(data)
+    if db.session.commit():
       return 'success'
     else:
       raise Exception('Failed to add data')
