@@ -1,6 +1,6 @@
 from flask import Flask
 from os import path
-from routes.routes import router
+from routes.routers import router
 import database.db_model as database
 
 basedir = path.abspath(path.dirname(__file__))

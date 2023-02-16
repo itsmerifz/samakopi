@@ -1,6 +1,6 @@
 import pickle
 
-def remove_stopword(text: str):
+def remove_stopword(text: str) -> str:
   try:
     with open('D:\KULIAH\SKP n SKRIPSWITT\RIL PROJECT SKRIPSWITT\BACKEND\model\stopword.pickle', 'rb') as handle:
       stopword = pickle.load(handle)
