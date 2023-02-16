@@ -5,7 +5,7 @@ label_mediation = ["Keputusan Pimpinan", "Jalur Hukum", "Musyawarah",  "Tidak Ad
 
 def load_rcnn_model():
   try: 
-    model = tf.keras.models.load_model('D:\KULIAH\SKP n SKRIPSWITT\RIL PROJECT SKRIPSWITT\BACKEND\model\h5\modelfix.h5')
+    model = tf.keras.models.load_model('D:\KULIAH\SKP n SKRIPSWITT\RIL PROJECT SKRIPSWITT\BACKEND\model\h5\modelfix.h5', compile=False)
     if model == None:
       raise Exception('Model not found')
     return model
@@ -14,7 +14,7 @@ def load_rcnn_model():
     
 def load_rcnn_mediation_model():
   try: 
-    model = tf.keras.models.load_model('D:\KULIAH\SKP n SKRIPSWITT\RIL PROJECT SKRIPSWITT\BACKEND\model\h5\modelfix-mediasi.h5')
+    model = tf.keras.models.load_model('D:\KULIAH\SKP n SKRIPSWITT\RIL PROJECT SKRIPSWITT\BACKEND\model\h5\modelfix-mediasi.h5', compile=False)
     if model == None:
       raise Exception('Model not found')
     return model

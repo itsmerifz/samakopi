@@ -74,6 +74,7 @@ def rcnn_predict():
     
 @router.route('/rcnnwebmediasi', methods=['POST'])
 def rcnn_mediasi_webpredict():
+  breakpoint()
   try:
     model = load_rcnn_mediation_model()
     recieved_data = request.get_json()
@@ -81,7 +82,8 @@ def rcnn_mediasi_webpredict():
       return jsonify({
         'error': 'No data provided'
         }), 404
-    text = str(recieved_data['text'])
+    link = str(recieved_data['link'])
+    text = get_web_texts(link)
     text = p.clean(text)
     text = remove_stopword(text)
     padded_data = tokenize(text)
@@ -103,7 +105,7 @@ def rcnn_mediasi_webpredict():
 @router.route('/rcnnmediasi', methods=['POST'])
 def rcnn_mediasi():
   try:
-    model = load_rcnn_model()
+    model = load_rcnn_mediation_model()
     recieved_data = request.get_json()
     if not recieved_data:
       return jsonify({
@@ -118,10 +120,10 @@ def rcnn_mediasi():
       data = {
         'id': str(date),
         'status': 'success',
-        'hasil': label_categories[np.argmax(pred)],
+        'hasil': label_mediation[np.argmax(pred)],
         'percentage': '{:.2f}%'.format(pred[0][np.argmax(pred)] * 100)
       }
-      create_predict_result_data(data, text)
+      create_mediasi_data(data, text)
       return jsonify(data), 200
   except Exception as e:
     return jsonify({
