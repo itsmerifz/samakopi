@@ -74,7 +74,6 @@ def rcnn_predict():
     
 @router.route('/rcnnwebmediasi', methods=['POST'])
 def rcnn_mediasi_webpredict():
-  breakpoint()
   try:
     model = load_rcnn_mediation_model()
     recieved_data = request.get_json()
